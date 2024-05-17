@@ -1,0 +1,20 @@
+.form-cash__label {
+
+    font-size: 0.8em;
+    margin-bottom: 2vh;
+    margin-right: 0;
+}
+
+.form-cash__input-amount {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 0;
+    height: 7vh;
+    width: 80vw;
+    border-radius: 12px;
+    border: 1px solid var(--tg-theme-link-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--tg-theme-text-color, black);
+    background-color: var(--tg-theme-bg-color);
+}

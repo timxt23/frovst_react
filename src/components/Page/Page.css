@@ -1,8 +1,12 @@
 .page {
-  padding: 0 10px;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 
+.page__title {
+  margin-bottom: 0.5rem;
+}
+
 .page__disclaimer {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }

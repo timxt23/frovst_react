@@ -1,0 +1,12 @@
+.search-box {
+    width: 85vw;
+    margin-bottom: 1rem;
+}
+
+.search-box__p {
+    display: flex;
+    width: 85vw;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 0;
+}

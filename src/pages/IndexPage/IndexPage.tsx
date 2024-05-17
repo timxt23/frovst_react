@@ -7,10 +7,10 @@ import { routes } from '@/navigation/routes.tsx';
 import './IndexPage.css';
 
 export const IndexPage: FC = () => (
-  <Page title="Home Page">
+  <Page title="Home Page1">
     <p>
       This page is a home page in this boilerplate. You can use the links below to visit other
-      pages with their own functionality.
+      pages with their own func.
     </p>
     <ul className="index-page__links">
       {routes.map(({ path, title, icon }) => title && (

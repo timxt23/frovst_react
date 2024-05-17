@@ -8,6 +8,7 @@ import { Page } from '@/components/Page/Page.tsx';
 
 import './InitDataPage.css';
 
+
 function getUserRows(user: User): DisplayDataRow[] {
   return [
     { title: 'id', value: user.id.toString() },
@@ -20,8 +21,10 @@ function getUserRows(user: User): DisplayDataRow[] {
 }
 
 export const InitDataPage: FC = () => {
+
   const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
+
 
   const initDataRows = useMemo<DisplayDataRow[] | undefined>(() => {
     if (!initData || !initDataRaw) {
