@@ -39,6 +39,7 @@ export const App: FC = () => {
 
   // Create new application navigator and attach it to the browser history, so it could modify
   // it and listen to its changes.
+  // eslint-disable-next-line react/prop-types
   const navigator = useMemo(() => initNavigator(
     'app-navigation-state',
     { hashMode: 'default' },
