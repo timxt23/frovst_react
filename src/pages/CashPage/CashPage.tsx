@@ -1,13 +1,13 @@
 import { FC, useState, useEffect } from 'react';
 import { HapticFeedback, useMainButton, postEvent, useInitData, usePopup } from '@tma.js/sdk-react';
 
-import { Radio, ConfigProvider } from 'antd';
+import { Radio, ConfigProvider, RadioChangeEvent } from 'antd';
 import axios from "axios";
 
 import { Page } from '@/components/Page/Page.tsx';
 import { InputField } from '@/components/InputField/InputField';
 import { WarehouseSelect } from '@/components/WarehouseSelect/WarehouseSelect';
-
+import { OpenPopupOptions } from '@tma.js/sdk-react';
 
 import "./CashPage.css"
 
@@ -62,19 +62,19 @@ export const CashPage: FC = () => {
     const [formData, setFormData] = useState<FormData>(initialState);
 
     const popup = usePopup()
-    const popupParamsSucces = {
+    const popupParamsSucces: OpenPopupOptions = {
         title: 'Статус',
         message: 'Запись отправлена',
         buttons: [{ id: 'ok', type: 'default', text: 'Хорошо' }]
     }
-    const popupParamsError = {
+    const popupParamsError: OpenPopupOptions = {
         title: 'Ошибка',
         message: 'Что-то пошло не так, нужен Тимур',
         buttons: [{ id: 'ok', type: 'default', text: 'Ок' }]
     }
 
 
-    const fetchPostCashItem = ( {formData} ) => {
+    const fetchPostCashItem = ({ formData }: {formData: FormData}) => {
         axios
             .post(`${WHPATH}new_item/`, formData, {headers: {
                 "Localtunnel-Agent-Ips": AUTHHEADER,
@@ -126,10 +126,19 @@ export const CashPage: FC = () => {
         };
     }, [])
 
-    const handleFormData = (event: any) => {
+    const handleFormData = <T extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(event: React.ChangeEvent<T>) => {
         const { name, value } = event.target;
         setFormData((prev) => ({...prev, [name]: value}))
+        haptic.selectionChanged()
     }
+
+    const handleRadioChange = (event: RadioChangeEvent) => {
+    const { name, value } = event.target;
+    if (typeof name === 'string') {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      haptic.impactOccurred('medium')
+    }
+  };
 
     const handleSelectData = (option: OptionType | null) => {
         if (option) {
@@ -192,8 +201,8 @@ export const CashPage: FC = () => {
                 }}>
                 <Radio.Group
                     name='type'
-                    onMouseLeave={() => (haptic.impactOccurred('medium'))}
-                    onChange={handleFormData}
+                    // onMouseLeave={() => (haptic.impactOccurred('medium'))}
+                    onChange={handleRadioChange}
                     options={operationTypes}
                     value={formData.type}
                     optionType='button'
@@ -215,7 +224,6 @@ export const CashPage: FC = () => {
                 pattern=""
                 value={formData.date}
                 onChange={handleFormData}
-                onMouseEnter={haptic.selectionChanged()}
             />
             <InputField
                 label='Сумма в руб.'

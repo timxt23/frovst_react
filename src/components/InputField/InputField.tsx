@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, ChangeEvent } from 'react';
 
 import "./InputField.css"
 
@@ -9,36 +9,36 @@ type Params = {
     name?: string;
     placeholder?: string;
     pattern?: string;
-    value?: any;
-    onChange?: any;
+    value?: string | number;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 
 const todayDate = () => {
 
-    let today = new Date();
-    let year = today.getFullYear();
-    let month = String(today.getMonth() + 1).padStart(2, '0'); // добавляем ноль в начале, если месяц < 10
-    let day = String(today.getDate()).padStart(2, '0'); // добавляем ноль в начале, если день < 10
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // добавляем ноль в начале, если месяц < 10
+    const day = String(today.getDate()).padStart(2, '0'); // добавляем ноль в начале, если день < 10
 
     return `${year}-${month}-${day}`
 }
 
 const sevenDaysAgo = () => {
-    let today = new Date();
+    const today = new Date();
 
-    let sevenDaysAgo = new Date(today);
+    const sevenDaysAgo = new Date(today);
     sevenDaysAgo.setDate(today.getDate() - 7);
 
-    let year = sevenDaysAgo.getFullYear();
-    let month = String(sevenDaysAgo.getMonth() + 1).padStart(2, '0'); // добавляем ноль в начале, если месяц < 10
-    let day = String(sevenDaysAgo.getDate()).padStart(2, '0'); // добавляем ноль в начале, если день < 10
+    const year = sevenDaysAgo.getFullYear();
+    const month = String(sevenDaysAgo.getMonth() + 1).padStart(2, '0'); // добавляем ноль в начале, если месяц < 10
+    const day = String(sevenDaysAgo.getDate()).padStart(2, '0'); // добавляем ноль в начале, если день < 10
 
     return `${year}-${month}-${day}`
 }
 
 
-export const InputField: FC = (props: Params) => {
+export const InputField: FC<Params> = (props: Params) => {
     const isDate = props.type === 'date';
 
 
