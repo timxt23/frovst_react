@@ -12,8 +12,8 @@ import { OpenPopupOptions } from '@tma.js/sdk-react';
 import "./CashPage.css"
 import { SingleValue } from 'react-select';
 
-const WHPATH = 'https://localhost.loca.lt/'
-const AUTHHEADER = "45.15.157.215"
+const WHPATH = `${import.meta.env.VITE_DEV_BACKEND_API}`
+const AUTHHEADER = `${import.meta.env.VITE_DEV_AUTH}`
 
 
 type FormData = {
