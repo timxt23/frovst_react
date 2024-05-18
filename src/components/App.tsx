@@ -8,6 +8,7 @@ import {
   useThemeParams,
   useViewport,
 } from '@tma.js/sdk-react';
+import type { BrowserNavigatorHashMode } from '@tma.js/sdk';
 import { type FC, useEffect, useMemo } from 'react';
 import {
   Navigate,
@@ -17,6 +18,7 @@ import {
 } from 'react-router-dom';
 
 import { routes } from '@/navigation/routes.tsx';
+
 
 export const App: FC = () => {
   const miniApp = useMiniApp();
@@ -42,7 +44,7 @@ export const App: FC = () => {
   const navigator = useMemo(() => initNavigator(
     'app-navigation-state',
     // eslint-disable-next-line react/prop-types
-    { hashMode: 'default' },
+    { hashMode: 'default' as unknown as BrowserNavigatorHashMode },
   ), []);
   const [location, reactNavigator] = useIntegration(navigator);
 
