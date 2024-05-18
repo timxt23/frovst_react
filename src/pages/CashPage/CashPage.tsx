@@ -10,6 +10,7 @@ import { WarehouseSelect } from '@/components/WarehouseSelect/WarehouseSelect';
 import { OpenPopupOptions } from '@tma.js/sdk-react';
 
 import "./CashPage.css"
+import { SingleValue } from 'react-select';
 
 const WHPATH = 'https://localhost.loca.lt/'
 const AUTHHEADER = "45.15.157.215"
@@ -41,7 +42,7 @@ export const CashPage: FC = () => {
     
     const initData = useInitData();
     const [warehouses, setWarehouses] = useState([]);
-    const options1 = warehouses.map(option => ({
+    const options1: OptionType[] = warehouses.map(option => ({
         value: option,
         label: option
       }));
@@ -140,7 +141,7 @@ export const CashPage: FC = () => {
     }
   };
 
-    const handleSelectData = (option: OptionType | null) => {
+    const handleSelectData = (option: SingleValue<OptionType> | null) => {
         if (option) {
             setFormData((prev) => ({ ...prev, warehouse: option.value }));
             haptic.selectionChanged();

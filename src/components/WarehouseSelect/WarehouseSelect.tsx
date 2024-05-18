@@ -1,8 +1,21 @@
-import Select from 'react-select'
+import Select, { ActionMeta, SingleValue }  from 'react-select'
+
 import "./WarehouseSelect.css"
 
 
-export const WarehouseSelect = ({ options, onChange }) => {
+export type OptionType = {
+    value: string;
+    label: string;
+};
+
+type WarehouseSelectProps = {
+    options: OptionType[];
+    onChange?: (newValue: SingleValue<OptionType>, actionMeta: ActionMeta<OptionType>) => void;
+};
+
+
+// eslint-disable-next-line react/prop-types
+export const WarehouseSelect: React.FC<WarehouseSelectProps> = ({ options, onChange }) => {
     return (
         <div className='search-box'>
                 <p className='search-box__p'>Выберите склад/лицо</p>
