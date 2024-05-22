@@ -78,7 +78,7 @@ export const CashPage: FC = () => {
     const fetchPostCashItem = ({ formData }: {formData: FormData}) => {
         axios
             .post(`${WHPATH}new_item/`, formData, {headers: {
-                "Localtunnel-Agent-Ips": AUTHHEADER,
+                "Authorization": `Bearer ${AUTHHEADER}`,
                 "Content-type": "application/json"
             }})
             .then((response) => {
@@ -101,7 +101,7 @@ export const CashPage: FC = () => {
         const fetchListOfWarehouses = () => {
             axios
                 .get(`${WHPATH}clients`, { signal, headers: {
-                    "Localtunnel-Agent-Ips": AUTHHEADER,
+                    "Authorization": `Bearer ${AUTHHEADER}`,
                     "Content-type": "application/json"
                     } })
                 .then(({ data }) => {
