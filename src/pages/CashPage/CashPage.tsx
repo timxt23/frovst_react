@@ -164,8 +164,7 @@ export const CashPage: FC = () => {
           mb.setParams({
             text: 'Записать ' + (formData.type === 'income' ? "Приход" : "Расход"),
             textColor: '#ffffff',
-            // eslint-disable-next-line react/prop-types
-            backgroundColor: formData.type === 'income' ? "#52c41a" : "#ff4d4f"
+            //backgroundColor: formData.type === 'income' ? "#52c41a" : "#ff4d4f"
           });
           if(allFilled) {
             mb.enable()
@@ -173,8 +172,7 @@ export const CashPage: FC = () => {
             return mb.on('click', () => {fetchPostCashItem({formData})}, true);
           } else {
             mb.setParams({
-                // eslint-disable-next-line react/prop-types
-                backgroundColor: formData.type === 'income' ? "#aff08e" : "#ffb3b4"
+                //backgroundColor: formData.type === 'income' ? "#aff08e" : "#ffb3b4"
             })
             mb.disable()
             mb.show()
