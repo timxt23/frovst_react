@@ -103,7 +103,7 @@ export const CashPage: FC = () => {
                 .get(`${WHPATH}clients/`, { signal, headers: {
                     "Authorization": `Bearer ${AUTHHEADER}`,
                     "Content-type": "application/json"
-                    }, data: {} })
+                    }, data: undefined })
                 .then(({ data }) => {
                     setWarehouses(data.data)
                     setError(null)
