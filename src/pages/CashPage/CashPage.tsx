@@ -100,10 +100,10 @@ export const CashPage: FC = () => {
 
         const fetchListOfWarehouses = () => {
             axios
-                .get(`${WHPATH}clients`, { signal, headers: {
+                .get(`${WHPATH}clients/`, { signal, headers: {
                     "Authorization": `Bearer ${AUTHHEADER}`,
                     "Content-type": "application/json"
-                    } })
+                    }, data: {undefined} })
                 .then(({ data }) => {
                     setWarehouses(data.data)
                     setError(null)
