@@ -113,7 +113,7 @@ export const CashPage: FC = () => {
                         console.log('Загрузка отменена')
                         return;
                     }
-                    setError(error.name)
+                    setError(error)
                     haptic.notificationOccurred('error');
                 })
             .finally(() => setIsLoading(false));
