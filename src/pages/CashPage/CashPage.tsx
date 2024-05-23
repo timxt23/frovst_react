@@ -102,7 +102,7 @@ export const CashPage: FC = () => {
             axios
                 .get(`${WHPATH}clients/`, { signal, headers: {
                     "Authorization": `Bearer ${AUTHHEADER}`,
-                    "X-API-Key": `Bearer ${AUTHHEADER}`,
+                    "X-API-Key": `${AUTHHEADER}`,
                     "Content-type": "application/json"
                     } })
                 .then(({ data }) => {
